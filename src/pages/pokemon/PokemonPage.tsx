@@ -10,7 +10,10 @@ type PokemonListResponse = {
   }[]
 }
 
-const fetcher: Fetcher<PokemonListResponse, string> = (...args) => fetch(...args).then(res => res.json())
+const fetcher: Fetcher<PokemonListResponse, string> = (...args) => {
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+  return sleep(3000).then(() => fetch(...args).then(res => res.json())) 
+}
 
 const usePokemonList = () => {
   const { data, error } = useSWR<PokemonListResponse>('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0', fetcher)

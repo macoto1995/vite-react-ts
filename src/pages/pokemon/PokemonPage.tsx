@@ -35,6 +35,11 @@ export const PokemonIndexPage = () => {
   
   return (
     <>
+      <header>
+        <h1>
+          Vite x React
+        </h1>
+      </header>
       { pokemons && 
         pokemons.map(pokemon => (
           <div key={pokemon.id}>

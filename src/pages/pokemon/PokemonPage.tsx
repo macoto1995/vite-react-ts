@@ -13,7 +13,7 @@ type PokemonListResponse = {
 const fetcher: Fetcher<PokemonListResponse, string> = (...args) => fetch(...args).then(res => res.json())
 
 const usePokemonList = () => {
-  const { data, error } = useSWR<PokemonListResponse>('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0', fetcher)
+  const { data, error } = useSWR<PokemonListResponse>('https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0', fetcher)
   const pokemons = useMemo(() => data?.results.map(pokemon => {
       const id = pokemon.url.split('/').at(-2)
       const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
